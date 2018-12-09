@@ -57,3 +57,5 @@ private:
 void add(std::stack<RegularAutomat>& st);
 
 void mul(std::stack<RegularAutomat>& st);
+
+bool testing ();

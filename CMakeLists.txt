@@ -1,30 +1,12 @@
-cmake_minimum_required(VERSION 3.8)
-project(FLanguages)
+project(Strategy)
+cmake_minimum_required(VERSION 3.1)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall")
+set(SRC_LIST main.cpp)
 
-add_executable(OutputTesting main.cpp)
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
 
-if (APPLE)
-    add_definitions(-DGTEST_USE_OWN_TR1_TUPLE)
-    add_definitions(-D__GLIBCXX__)
-endif (APPLE)
+add_executable(${PROJECT_NAME} ${SRC_LIST})
 
-
-
-find_package(GTest REQUIRED)
-find_package(Threads REQUIRED)
-
-include_directories(${GTEST_INCLUDE_DIRS})
-
-add_executable (
-        RunTests
-        cmake_test.cpp
-        main.cpp
-        test.cpp
-        )
-
-target_link_libraries(RunTests ${GTEST_LIBRARIES} Threads::Threads)
-
-enable_testing()
-add_test(Tests RunTests)
+target_link_libraries(${PROJECT_NAME})
